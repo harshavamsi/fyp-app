@@ -1,12 +1,12 @@
 var observable = require("data/observable");
-var observableArray = require("data/observable-array");
-import pages = require("ui/page");
-import { SelectedIndexChangedEventData } from "nativescript-drop-down";
+var observableArray = require("data/observable-array") ;
+var pages = require("ui/page");
+var SelectedIndexChangedEventData = require("nativescript-drop-down");
 
-var viewModel: observable.Observable;
+var viewModel = observable.Observable;
 
-export function pageLoaded(args: observable.EventData) {
-    var page = <pages.Page>args.object;
+exports.pageLoaded = function(args) {
+    var page = args.object;
     var items = new observableArray.ObservableArray();
 
     viewModel = new observable.Observable();
@@ -21,17 +21,15 @@ export function pageLoaded(args: observable.EventData) {
     page.bindingContext = viewModel;
 }
 
-export function dropDownOpened(args: EventData) {
+exports.dropDownOpened = function(args) {
     console.log("Drop Down opened");
 }
 
-export function dropDownClosed(args: EventData) {
+exports.dropDownClosed = function(args) {
     console.log("Drop Down closed");
 }
 
-export function dropDownSelectedIndexChanged(args: SelectedIndexChangedEventData) {
+exports.dropDownSelectedIndexChanged = function(args) {
     console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
 }
-exports.pageLoaded = function() {
 
-};
